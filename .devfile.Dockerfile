@@ -1,4 +1,4 @@
-FROM quay.io/devfile/universal-developer-image:ubi8-latest
+FROM quay.io/devfile/universal-developer-image:ubi9-latest
 
 #install Go 1.19
 RUN cd /tmp && wget https://go.dev/dl/go1.19.13.linux-amd64.tar.gz && \

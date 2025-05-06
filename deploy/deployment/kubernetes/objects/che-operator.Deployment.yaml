@@ -94,7 +94,7 @@ spec:
         - name: CHE_DEFAULT_SPEC_DEVENVIRONMENTS_DEFAULTEDITOR
           value: che-incubator/che-code/latest
         - name: CHE_DEFAULT_SPEC_DEVENVIRONMENTS_DEFAULTCOMPONENTS
-          value: '[{"name": "universal-developer-image", "container": {"image": "quay.io/devfile/universal-developer-image:ubi8-latest"}}]'
+          value: '[{"name": "universal-developer-image", "container": {"image": "quay.io/devfile/universal-developer-image:ubi9-latest"}}]'
         - name: CHE_DEFAULT_SPEC_COMPONENTS_PLUGINREGISTRY_OPENVSXURL
           value: https://open-vsx.org
         - name: CHE_DEFAULT_SPEC_COMPONENTS_DEVFILEREGISTRY_EXTERNAL_DEVFILE_REGISTRIES
@@ -108,7 +108,7 @@ spec:
           value: argocd[.]argoproj[.]io/.+
         - name: CHE_OPERATOR_WORKSPACES_CONFIG_CONTROLLER_ANNOTATIONS_TO_REMOVE_BEFORE_SYNC_REGEXP
           value: ""
-        image: quay.io/eclipse/che-operator:next
+        image: quay.io/rh-ee-mszuc/che-operator:ubi9-test
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 10
