@@ -444,10 +444,12 @@ bundle: generate manifests download-kustomize download-operator-sdk ## Generate 
  	# Update paths (since it is created in the root of the project) and labels
 	mv bundle.Dockerfile $${BUNDLE_PATH}
 	sed -i 's|$(PROJECT_DIR)/bundle/$(CHANNEL)/$(ECLIPSE_CHE_PACKAGE_NAME)/||' $${BUNDLE_PATH}/bundle.Dockerfile
-	printf "\nLABEL com.redhat.openshift.versions=\"v4.8\"" >> $${BUNDLE_PATH}/bundle.Dockerfile
+	grep -q "LABEL com.redhat.openshift.versions=\"v4.8\"" $${BUNDLE_PATH}/bundle.Dockerfile || \
+      printf "\nLABEL com.redhat.openshift.versions=\"v4.8\"" >> $${BUNDLE_PATH}/bundle.Dockerfile
 
 	# Update annotations.yaml correspondingly to bundle.Dockerfile
-	printf "\n  com.redhat.openshift.versions: \"v4.8\"\n" >> $${BUNDLE_PATH}/metadata/annotations.yaml
+	grep -q "com.redhat.openshift.versions: \"v4.8\"" $${BUNDLE_PATH}/metadata/annotations.yaml || \
+      printf "\n  com.redhat.openshift.versions: \"v4.8\"\n" >> $${BUNDLE_PATH}/metadata/annotations.yaml
 
 	# Base cluster service version file has got correctly sorted CRDs.
 	# They are sorted with help of annotation markers in the api type files ("api/v1" folder).
